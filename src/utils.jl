@@ -2,10 +2,12 @@
 
 _indexoffset(r::AbstractRange) = first(r) - 1
 _indexoffset(i::Integer) = 0
-_indexoffset(i::Colon) = 0
 _indexlength(r::AbstractRange) = length(r)
 _indexlength(i::Integer) = Int(i)
 _indexlength(i::Colon) = Colon()
+
+_toaxis(i::Integer) = Base.OneTo(i)
+_toaxis(i) = i
 
 _strip_IdOffsetRange(r::IdOffsetRange) = parent(r)
 _strip_IdOffsetRange(r) = r
